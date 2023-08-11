@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
-import SelectComponent from './components/SelectComponent';
+
 
 
 
@@ -9,12 +9,13 @@ import SelectComponent from './components/SelectComponent';
 
 function App() {
 
+ const [selectedCargoId, setSelectedCargoId] = useState(Number);
  const [salario, setSalario]= useState()
  const[nomeFuncionario,setNomeFuncionario]= useState()
+
  const [cargos, setCargos ] = useState([])
  const [funcionarios, setFuncionarios]= useState([])
- const [selectedCargoId, setSelectedCargoId] = useState(Number);
-
+ 
  const handleAddCargo = (cargos) => {
   const novoCargo = { id: cargos.length, salario};
 
@@ -22,7 +23,7 @@ function App() {
   console.log(cargos,novoCargo)
  }
 
- const handleAddFuncionario = (funcionario,selectedCargoId) => {
+ const handleAddFuncionario = (selectedCargoId) => {
   let salario = 0;
 
   for (const cargo of cargos) {
@@ -41,7 +42,7 @@ function App() {
     }
     setFuncionarios([...funcionarios,novoFuncionario])
     setNomeFuncionario('')
-    setSelectedCargoId('')
+    setSelectedCargoId()
     console.log(funcionarios,novoFuncionario)
  }
 
@@ -74,7 +75,29 @@ function App() {
                </option>
              ))}
           </select>
-          <button onClick={() => handleAddFuncionario(nomeFuncionario,selectedCargoId)}>Cadastrar</button>
+          <button onClick={() => handleAddFuncionario(selectedCargoId)}>Cadastrar</button>
+        </div>
+        
+        <div>
+          <h2>Relatório de Funcionários</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Salário</th>
+              </tr>
+            </thead>
+            <tbody>
+              {funcionarios.map((funcionario) => (
+                <tr key={funcionario.codigo}>
+                  <td>{funcionario.codigo}</td>
+                  <td>{funcionario.nome}</td>
+                  <td>{funcionario.salario}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
 
     </div>
