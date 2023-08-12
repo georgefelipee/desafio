@@ -1,0 +1,114 @@
+.card-cadastro{
+    margin-top: 100px;
+    margin-bottom: 80px;
+    margin-left: -70px;
+    background-color: #ee7b39;
+    color: #EEF4D4;
+    border-radius: 10px;
+    padding: 20px;
+    padding-bottom: 50px;
+   
+}
+.card-cadastro-funcionario{
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 80px;
+    margin-left: -70px;
+    background-color: #ee7b39;
+    color: #EEF4D4;
+    border-radius: 10px;
+    padding: 50px;
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+.funcionario-label{
+    margin: auto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    margin-right: 10px;
+
+}
+.funcionario-input{
+    margin: auto;
+    display: inline;
+    padding: 2px;
+    font-size: 15px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+.funcionario-cargo{
+    display: inline;
+    margin: auto;
+    margin-left: -30px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.funcionario-input:focus{
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.funcionario-select{
+    margin: auto;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: inline;
+    padding: 6px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    appearance: none; /* Remove o estilo padrão do sistema */
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+.salario{
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.salario-input{
+    margin-top: 30px;
+    margin-left: 10px;
+    padding: 2px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+.salario-input:focus{
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+button{
+ padding: 10px 10px;
+  font-size: 16px;
+  background-color: #ffffff;
+  color: #ee7b39;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.funcionario-button{
+
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+}
+
+button:hover{
+    background-color: #ca680d;
+}
+
+button:focus{
+    outline: none;
+}

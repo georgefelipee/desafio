@@ -1,0 +1,25 @@
+body{
+    text-align: center;
+    background-color:#ee7b39;
+  }
+  
+  header{
+    text-align: left;
+    background-color: #EEF4D4 ;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    height: 60px;
+    
+  }
+  .titulo{
+    margin-left: 20px;
+    padding-top: 5px;
+    color: #ee7b39;
+  }
+
+ 
+  
+  
+  
+  
