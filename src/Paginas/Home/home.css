@@ -10,13 +10,22 @@ body{
     margin-right: 20px;
     border-radius: 10px;
     height: 60px;
-    
+    margin-top: 25px;
+
   }
   .titulo{
     margin-left: 20px;
-    padding-top: 5px;
     color: #ee7b39;
+    display: inline;
+    justify-content: space-between;
   }
+.label-header{
+  margin-left: 72.2%;
+  color: #ee7b39;
+  font-weight: bolder;
+  font-size: larger;
+  cursor: pointer;
+}
 
  
   

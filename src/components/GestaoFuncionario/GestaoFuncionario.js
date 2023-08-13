@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect} from 'react';
 import './GestaoFuncionario.css';
 import './GestaoFuncionario.css'
+import Notification from '../NotificationCard/index'
 import Header from '../Header/header';
 import { useAppContext } from '../../AppContext';
 
@@ -13,48 +14,94 @@ function GestaoFuncionario(){
 
       dispatch({
         type: 'ADD_CARGOS',
-        payload: { id: novoCargo.id , salario: novoCargo.salario },
+        payload: { id: novoCargo.id , nome: novoCargo.nomeCargo, salario: novoCargo.salario },
       });
      
   };
+  const handleAddFuncionarioGlobal = (novoFuncionario) => {
 
-const [selectedCargoId, setSelectedCargoId] = useState(Number);
- const [salario, setSalario]= useState()
- const[nomeFuncionario,setNomeFuncionario]= useState()
+    dispatch({
+      type: 'ADD_FUNCIONARIOS',
+      payload: { codigo:novoFuncionario.codigo, codigo_cargo:novoFuncionario.codigo_cargo,nome: novoFuncionario.nome, salario: novoFuncionario.salario },
+    });
+   
+};
+
+ const [selectedCargoId, setSelectedCargoId] = useState('');
+ const[nomeFuncionario,setNomeFuncionario]= useState('')
+
+ const [salario, setSalario]= useState('')
+ const[nomeCargo,setNomeCargo]= useState('')
+
+ const [showNotificationCargo, setShowNotificationCargo] = useState(false);
+ const [showNotificationFuncionario, setShowNotificationFuncionario] = useState(false);
 
  const [cargos, setCargos ] = useState([])
  const [funcionarios, setFuncionarios]= useState([])
  
- const handleAddCargo = (cargos) => {
-  const novoCargo = { id: state.cargos.length, salario};
-  
- 
-  setCargos([...cargos, novoCargo]); 
-  handleAddCargoGlobal(novoCargo)
-  console.log(cargos,novoCargo)
- }
+
 
  const handleAddFuncionario = (selectedCargoId) => {
+  if(nomeFuncionario==''){
+    alert('Digite um Nome ! ')
+    return;
+  }
+  if(selectedCargoId== ''){
+    alert('Selecione um cargo !')
+    return;
+  }
   let salario = 0;
 
-  for (const cargo of cargos) {
+  for (const cargo of state.cargos) {
     if (cargo.id === parseInt(selectedCargoId)) {
       salario = cargo.salario;
       break;
     }
   }
+
     const novoFuncionario= {
-      codigo: funcionarios.length,
+      codigo: state.funcionarios.length,
       nome: nomeFuncionario,
       codigo_cargo:selectedCargoId,
       salario: salario
-
        
     }
-    setFuncionarios([...funcionarios,novoFuncionario])
+    
+    handleAddFuncionarioGlobal(novoFuncionario)
     setNomeFuncionario('')
-    console.log(funcionarios,novoFuncionario)
+    setShowNotificationFuncionario(true)
  }
+
+ const handleAddCargo = (cargos) => {
+  if(salario == ''){
+    alert('Por favor, insira um salário.');
+    return;
+  }
+  if(nomeCargo == ''){
+    alert('Por favor, insira um nome para o cargo !');
+    return;
+  }
+  const novoCargo = { id: state.cargos.length, nomeCargo, salario};
+
+ 
+  setCargos([...cargos, novoCargo]); 
+  handleAddCargoGlobal(novoCargo)
+  console.log(cargos,novoCargo)
+  setSalario('')
+  setNomeCargo('')
+  setShowNotificationCargo(true)
+ }
+
+ useEffect(() => {
+  if (showNotificationCargo || showNotificationFuncionario) {
+    const timeout = setTimeout(() => {
+      setShowNotificationFuncionario(false)
+      setShowNotificationCargo(false);
+    }, 2000); // 2000 milissegundos = 2 segundos
+
+    return () => clearTimeout(timeout);
+  }
+}, [showNotificationCargo,showNotificationFuncionario]);
 
     return(
        <>
@@ -62,11 +109,15 @@ const [selectedCargoId, setSelectedCargoId] = useState(Number);
         <main className='container'>
           <div className='card-cadastro'>
             <h2>Cadastrar Cargo</h2>
+            <p className='nome'>Nome:</p>
+            <input placeholder='Digite um nome ' className='nome-input' type='text' 
+            value={nomeCargo} onChange={(e)=> setNomeCargo(e.target.value)}/>
+            <div></div>
             <label className='salario'>
                 Salário: 
-            <input className='salario-input' type="number" value={salario} onChange={(e)=> setSalario(e.    target.value)} />
+            <input placeholder='Digite um salário' className='salario-input' type="number" value={salario} onChange={(e)=> setSalario(e.target.value)} />
            </label>
-            <button onClick={()=> handleAddCargo(cargos)} > Cadastrar cargo </button>
+            <button   onClick={()=> handleAddCargo(cargos)} > Cadastrar  </button>
           </div>
 
           <div className='card-cadastro-funcionario'>
@@ -80,18 +131,23 @@ const [selectedCargoId, setSelectedCargoId] = useState(Number);
             />
             <div></div>
             <p className='funcionario-cargo'>Cargo:</p>
-            <select className='funcionario-select' onChange={(e) => setSelectedCargoId(e.target.value)}>
-              <option value="">Selecione um cargo</option>
+            <select  className='funcionario-select' onChange={(e) => setSelectedCargoId(e.target.value)}>
+              <option value="">Selecione um Cargo</option>
                 {state.cargos.map((cargo) => (
                 <option key={cargo.id} value={cargo.id}>
-                  {cargo.id}
+                  {cargo.nome}
                 </option>
               ))}
             </select>
             <button className='funcionario-button' onClick={() => handleAddFuncionario(selectedCargoId)}>Cadastrar</button>
           </div> 
         </main>
-              
+          {
+          showNotificationFuncionario &&  <Notification message="Funcionario adicionado com sucesso!" />
+          }
+          {
+          showNotificationCargo &&  <Notification message="Cargo adicionado com sucesso!" />
+          }
       </>   
         
     )

@@ -11,8 +11,8 @@ const appReducer = (state, action) => {
   switch (action.type) {
     case 'ADD_CARGOS':
       return { ...state, cargos: [...state.cargos, action.payload] };
-    case 'SET_FUNCIONARIOS':
-      return { ...state, funcionarios: action.payload };
+    case 'ADD_FUNCIONARIOS':
+      return { ...state, funcionarios:[...state.funcionarios,action.payload] };
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Paginas/Home";
 import GestaoFuncionario from "./components/GestaoFuncionario/GestaoFuncionario";
+import GestaoRelatorio from "./components/GestaoRelatorio/GestaoRelatorio"
 import { AppProvider } from "./AppContext";
 
 function AppRoutes(){
@@ -11,6 +12,7 @@ function AppRoutes(){
             <Routes>
                 <Route path="/" element={ <Home></Home> }> </Route>
                 <Route path="/funcionariosAndCargos" element={ <GestaoFuncionario/> }> </Route>
+                <Route path='/relatorios' element = {<GestaoRelatorio/>} ></Route>
             </Routes>
         </AppProvider>
             

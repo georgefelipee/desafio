@@ -1,0 +1,87 @@
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 8px;
+    padding: 50px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+.relatorio{
+    margin-top: 100px;
+    margin-bottom: 80px;
+    margin-left: -70px;
+    background-color: #ee7b39;
+    color: #EEF4D4;
+    border-radius: 10px;
+    padding: 20px;
+    padding-bottom: 10px;
+   
+}
+.relatorio-select{
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  display: inline;
+  padding: 6px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  appearance: none; /* Remove o estilo padrão do sistema */
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+.table-head{
+    background-color: #f8f9fa;
+}
+
+th{
+ padding: 5%;
+ padding-left: 10px;
+ color: #333;
+ text-align: center;
+}
+tbody{
+
+}
+
+tr{
+    background-color: #f8f9fa;
+    margin-bottom: 5px;  
+}
+tr:nth-child(even){
+    background-color: #e9ecef;
+}
+td{
+    padding: 5px;
+    text-align: center;
+    color: #555;
+}
+.tablewrapper{
+    max-height: 200px;
+    overflow-y: auto;
+}
+.tablewrapper::-webkit-scrollbar {
+    width: 8px; /* Largura da barra de rolagem */
+  }
+  
+  .tablewrapper::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Cor do fundo da área da barra de rolagem */
+  }
+  
+  .tablewrapper::-webkit-scrollbar-thumb {
+    background: #888; /* Cor da barra de rolagem */
+    border-radius: 4px; /* Arredondamento das bordas da barra de rolagem */
+  }
+  
+.tablewrapper::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Cor da barra de rolagem ao passar o mouse */
+  }
+.total-salario{
+  font-weight: 700;
+}

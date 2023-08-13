@@ -6,7 +6,7 @@
     color: #EEF4D4;
     border-radius: 10px;
     padding: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
    
 }
 .card-cadastro-funcionario{
@@ -72,6 +72,7 @@
     font-style: normal;
     font-weight: bold;
     margin-right: 10px;
+    margin-left: 5px;
 }
 .salario-input{
     margin-top: 30px;
@@ -94,21 +95,41 @@ button{
   color: #ee7b39;
   font-weight: bold;
   border: none;
+  margin: auto;
+  margin-top: 20px;
   border-radius: 4px;
   cursor: pointer;
+  display: block;
   transition: background-color 0.3s ease;
 }
 .funcionario-button{
-
   margin: auto;
   margin-top: 10px;
   display: block;
 }
 
 button:hover{
-    background-color: #ca680d;
+    background-color: #dfac7c;
+    color: #ffffff;
 }
 
 button:focus{
     outline: none;
+}
+.nome{
+    display: inline;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    margin-right: 10px;
+    
+}
+.nome-input{
+    margin-top: 10px;
+    margin-left: 5px;
+    padding: 2px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
 }
