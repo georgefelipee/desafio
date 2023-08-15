@@ -7,6 +7,7 @@ import { useAppContext } from '../../AppContext';
 
 function GestaoFuncionario(){
 
+
   const { state , dispatch } = useAppContext();
 
 
@@ -22,7 +23,8 @@ function GestaoFuncionario(){
 
     dispatch({
       type: 'ADD_FUNCIONARIOS',
-      payload: { codigo:novoFuncionario.codigo, codigo_cargo:novoFuncionario.codigo_cargo,nome: novoFuncionario.nome, salario: novoFuncionario.salario },
+      payload: { codigo: novoFuncionario.codigo, codigo_cargo: novoFuncionario.codigo_cargo, 
+                  nome: novoFuncionario.nome, salario: novoFuncionario.salario },
     });
    
 };
@@ -40,7 +42,7 @@ function GestaoFuncionario(){
  const [funcionarios, setFuncionarios]= useState([])
  
 
-
+//2
  const handleAddFuncionario = (selectedCargoId) => {
   if(nomeFuncionario==''){
     alert('Digite um Nome ! ')
@@ -50,6 +52,7 @@ function GestaoFuncionario(){
     alert('Selecione um cargo !')
     return;
   }
+
   let salario = 0;
 
   for (const cargo of state.cargos) {
@@ -62,7 +65,7 @@ function GestaoFuncionario(){
     const novoFuncionario= {
       codigo: state.funcionarios.length,
       nome: nomeFuncionario,
-      codigo_cargo:selectedCargoId,
+      codigo_cargo: selectedCargoId,
       salario: salario
        
     }
@@ -72,7 +75,8 @@ function GestaoFuncionario(){
     setShowNotificationFuncionario(true)
  }
 
- const handleAddCargo = (cargos) => {
+ //1
+ const handleAddCargo = () => {
   if(salario == ''){
     alert('Por favor, insira um salário.');
     return;
@@ -81,15 +85,14 @@ function GestaoFuncionario(){
     alert('Por favor, insira um nome para o cargo !');
     return;
   }
-  const novoCargo = { id: state.cargos.length, nomeCargo, salario};
 
+  const novoCargo = { id: state.cargos.length, nomeCargo, salario};
  
-  setCargos([...cargos, novoCargo]); 
   handleAddCargoGlobal(novoCargo)
-  console.log(cargos,novoCargo)
   setSalario('')
   setNomeCargo('')
-  setShowNotificationCargo(true)
+  setShowNotificationCargo(true)  
+  console.log(cargos,novoCargo)
  }
 
  useEffect(() => {
@@ -117,7 +120,7 @@ function GestaoFuncionario(){
                 Salário: 
             <input placeholder='Digite um salário' className='salario-input' type="number" value={salario} onChange={(e)=> setSalario(e.target.value)} />
            </label>
-            <button   onClick={()=> handleAddCargo(cargos)} > Cadastrar  </button>
+            <button   onClick={()=> handleAddCargo()} > Cadastrar  </button>
           </div>
 
           <div className='card-cadastro-funcionario'>
